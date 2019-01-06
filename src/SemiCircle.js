@@ -4,9 +4,9 @@ import 'leaflet-semicircle';
 
 class SemiCircle extends Path {
     createLeafletElement(props) {
-        const { radius, startAngle, stopAngle } = props;
+        const { radius = null, startAngle, stopAngle, position } = props;
         return new L.SemiCircle(
-            props.position,
+            position,
             {
                 radius,
                 startAngle,
