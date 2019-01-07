@@ -7,6 +7,13 @@ class SemiCircleMarker extends Path {
         const { position, ...options } = props;
         return new L.SemiCircleMarker(position, options);
     }
+
+    updateLeafletElement(fromProps, toProps) {
+        this.props.leaflet.layerContainer.removeLayer(this.leafletElement);
+        const { position, ...options } = toProps;
+        this.leafletElement = new L.SemiCircleMarker(position, options);
+        this.props.leaflet.layerContainer.addLayer(this.leafletElement);
+    }
 }
 
 export default withLeaflet(SemiCircleMarker);
