@@ -1,3 +1,7 @@
 import SemiCircle from './SemiCircle';
+import SemiCircleMarker from './SemiCircleMarker';
 
-export default SemiCircle;
+export {
+    SemiCircle,
+    SemiCircleMarker
+};
