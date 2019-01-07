@@ -9,10 +9,8 @@ class SemiCircle extends Path {
     }
 
     updateLeafletElement(fromProps, toProps) {
-        this.props.leaflet.layerContainer.removeLayer(this.leafletElement);
-        const { position, ...options } = toProps;
-        this.leafletElement = new L.SemiCircle(position, options);
-        this.props.leaflet.layerContainer.addLayer(this.leafletElement);
+        this.leafletElement.setStartAngle(toProps.startAngle);
+        this.leafletElement.setStopAngle(toProps.stopAngle);
     }
 }
 
