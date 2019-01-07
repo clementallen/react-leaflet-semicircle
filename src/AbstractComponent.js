@@ -1,17 +1,20 @@
-import { Path, withLeaflet } from 'react-leaflet';
-import L from 'leaflet';
+import { Path } from 'react-leaflet';
 import 'leaflet-semicircle';
 
-class SemiCircleMarker extends Path {
+export default class AbstractComponent extends Path {
     createLeafletElement(props) {
         const { position, ...options } = props;
-        return new L.SemiCircleMarker(position, options);
+        return new this.leafletComponent(position, options);
     }
 
     updateLeafletElement(fromProps, toProps) {
         this.leafletElement.setStartAngle(toProps.startAngle);
         this.leafletElement.setStopAngle(toProps.stopAngle);
     }
-}
 
-export default withLeaflet(SemiCircleMarker);
+    get leafletComponent() {
+        throw new Error(
+            'leafletComponent getter not implemented'
+        );
+    }
+}

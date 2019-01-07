@@ -3,9 +3,9 @@ import L from 'leaflet';
 import AbstractComponent from './AbstractComponent';
 
 export default withLeaflet(
-    class SemiCircle extends AbstractComponent {
+    class SemiCircleMarker extends AbstractComponent {
         get leafletComponent() {
-            return L.SemiCircle;
+            return L.SemiCircleMarker;
         }
     }
 );
