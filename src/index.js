@@ -1,4 +1,6 @@
-import SemiCircle from './SemiCircle';
-import SemiCircleMarker from './SemiCircleMarker';
+import { withLeaflet } from 'react-leaflet';
+import SS from './SemiCircle';
+import SSM from './SemiCircleMarker';
 
-export { SemiCircle, SemiCircleMarker };
+export const SemiCircle = withLeaflet(SS);
+export const SemiCircleMarker = withLeaflet(SSM);
