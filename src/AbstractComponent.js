@@ -7,9 +7,21 @@ export default class AbstractComponent extends Path {
         return new this.leafletComponent(position, options);
     }
 
-    updateLeafletElement(fromProps, toProps) {
-        this.leafletElement.setStartAngle(toProps.startAngle);
-        this.leafletElement.setStopAngle(toProps.stopAngle);
+    updateLeafletElement(fromProps, { startAngle, stopAngle }) {
+        this.leafletElement.setStartAngle(startAngle);
+        this.leafletElement.setStopAngle(stopAngle);
+    }
+
+    setDirection(direction, size) {
+        this.leafletElement.setDirection(direction, size);
+    }
+
+    setStartAngle(angle) {
+        this.leafletElement.setStartAngle(angle);
+    }
+
+    setStopAngle(angle) {
+        this.leafletElement.setStopAngle(angle);
     }
 
     get leafletComponent() {
