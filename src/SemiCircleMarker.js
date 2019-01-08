@@ -1,8 +1,8 @@
 import L from 'leaflet';
 import AbstractComponent from './AbstractComponent';
 
-export default class SemiCircle extends AbstractComponent {
+export default class SemiCircleMarker extends AbstractComponent {
     get leafletComponent() {
-        return L.SemiCircle;
+        return L.SemiCircleMarker;
     }
 }
