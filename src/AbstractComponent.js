@@ -25,8 +25,6 @@ export default class AbstractComponent extends Path {
     }
 
     get leafletComponent() {
-        throw new Error(
-            'leafletComponent getter not implemented'
-        );
+        throw new Error('leafletComponent getter not implemented');
     }
 }
