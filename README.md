@@ -5,7 +5,7 @@
 [![](https://img.shields.io/github/license/clementallen/react-leaflet-semicircle.svg?style=flat-square)](https://github.com/clementallen/react-leaflet-semicircle)
 [![](https://img.shields.io/david/clementallen/react-leaflet-semicircle.svg?style=flat-square)](https://david-dm.org/clementallen/react-leaflet-semicircle)
 [![](https://img.shields.io/david/dev/clementallen/react-leaflet-semicircle.svg?style=flat-square)](https://david-dm.org/clementallen/react-leaflet-semicircle?type=dev)
-[![](https://img.shields.io/codeclimate/maintainability/clementallen/react-leaflet-semicircle.svg?style=flat-square)](https://codeclimate.com/github/clementallen/react-leaflet-semicircle)
+[![](https://img.shields.io/codeclimate/maintainability/clementallen/react-leaflet-semicircle.svg?style=flat-square)](https://codeclimate.com/github/clementallen/react-leaflet-semicircle) [![Greenkeeper badge](https://badges.greenkeeper.io/clementallen/react-leaflet-semicircle.svg)](https://greenkeeper.io/)
 
 React wrapper of [leaflet-semicircle](https://github.com/jieter/Leaflet-semicircle)
 for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
