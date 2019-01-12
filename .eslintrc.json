@@ -1,9 +1,10 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "jest": true
     },
-    "extends": "eslint:recommended",
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -14,5 +15,13 @@
     "plugins": ["react", "prettier"],
     "rules": {
         "prettier/prettier": ["error", { "singleQuote": true, "tabWidth": 4 }]
+    },
+    "globals": {
+        "shallow": true
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
 }
