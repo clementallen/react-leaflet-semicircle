@@ -17,7 +17,8 @@
         "prettier/prettier": ["error", { "singleQuote": true, "tabWidth": 4 }]
     },
     "globals": {
-        "shallow": true
+        "shallow": true,
+        "mount": true
     },
     "settings": {
         "react": {

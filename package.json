@@ -6,6 +6,7 @@
     "module": "src/index.js",
     "scripts": {
         "test": "jest",
+        "coverage": "jest --coverage",
         "lint": "eslint ./src/**/*.js ./__tests__/**/*.js",
         "changelog": "auto-changelog -p --tag-prefix v",
         "release": "np",
