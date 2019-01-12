@@ -2,13 +2,16 @@
     "name": "react-leaflet-semicircle",
     "version": "0.3.0",
     "description": "React wrapper of leaflet-semicircle",
-    "main": "src/index.js",
+    "main": "dist/index.js",
+    "module": "src/index.js",
     "scripts": {
         "test": "jest",
         "lint": "eslint ./src/**/*.js ./__tests__/**/*.js",
         "changelog": "auto-changelog -p --tag-prefix v",
         "release": "np",
-        "version": "npm run changelog && git add CHANGELOG.md"
+        "version": "npm run changelog && git add CHANGELOG.md",
+        "build": "babel src --out-dir dist",
+        "prepublishOnly": "npm run build"
     },
     "repository": {
         "type": "git",
@@ -49,7 +52,7 @@
         "prettier": "^1.15.3",
         "react": "^16.7.0",
         "react-dom": "^16.7.0",
-        "react-leaflet": "^2.1.4"
+        "react-leaflet": "^2.2.0"
     },
     "peerDependencies": {
         "leaflet": "^1.0.0",
