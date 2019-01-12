@@ -15,6 +15,12 @@ const MockComponent = withLeaflet(
     }
 );
 
+function updateProps(wrapper, props) {
+    wrapper.setProps({
+        children: cloneElement(wrapper.props().children, props)
+    });
+}
+
 const mockOptions = {
     position: [51.505, -0.09],
     radius: 2000,
@@ -22,6 +28,8 @@ const mockOptions = {
     stopAngle: 180,
     color: 'white'
 };
+let wrapper;
+let testRef;
 
 describe('<AbstractComponent />', () => {
     beforeEach(() => {
@@ -29,6 +37,12 @@ describe('<AbstractComponent />', () => {
         setStartAngleSpy.mockClear();
         setStopAngleSpy.mockClear();
         setDirectionSpy.mockClear();
+        testRef = createRef();
+        wrapper = mount(
+            <Map>
+                <MockComponent {...mockOptions} ref={testRef} />
+            </Map>
+        );
     });
     describe('constructor', () => {
         it('should throw an error when leafletComponent is not implemented', () => {
@@ -38,72 +52,39 @@ describe('<AbstractComponent />', () => {
         });
         it('should call the leaflet plugin constructor with the expected arguments', () => {
             const { position, ...options } = mockOptions;
-            mount(
-                <Map>
-                    <MockComponent {...mockOptions} />
-                </Map>
-            );
             expect(MockLeafletPlugin).toHaveBeenCalledWith(position, options);
         });
     });
 
     describe('prop changes', () => {
         it('should call the setStartAngle method if props change', () => {
-            const component = mount(
-                <Map>
-                    <MockComponent {...mockOptions} />
-                </Map>
-            );
-            component.setProps({
-                children: cloneElement(component.props().children, {
-                    startAngle: 100
-                })
-            });
+            updateProps(wrapper, { startAngle: 100 });
             expect(setStartAngleSpy).toHaveBeenCalledWith(100);
         });
         it('should call the setStopAngle method if props change', () => {
-            const component = mount(
-                <Map>
-                    <MockComponent {...mockOptions} />
-                </Map>
-            );
-            component.setProps({
-                children: cloneElement(component.props().children, {
-                    stopAngle: 200
-                })
-            });
+            updateProps(wrapper, { stopAngle: 200 });
             expect(setStopAngleSpy).toHaveBeenCalledWith(200);
+        });
+        it('should not call the setStartAngle method if props do not change', () => {
+            updateProps(wrapper, { startAngle: 90 });
+            expect(setStartAngleSpy).toHaveBeenCalledTimes(0);
+        });
+        it('should not call the setStopAngle method if props do not change', () => {
+            updateProps(wrapper, { stopAngle: 180 });
+            expect(setStopAngleSpy).toHaveBeenCalledTimes(0);
         });
     });
 
     describe('ref methods', () => {
         it('should expose the setStartAngle ref method', () => {
-            const testRef = createRef();
-            mount(
-                <Map>
-                    <MockComponent {...mockOptions} ref={testRef} />
-                </Map>
-            );
             testRef.current.setStartAngle(30);
             expect(setStartAngleSpy).toHaveBeenCalledWith(30);
         });
         it('should expose the setStopAngle ref method', () => {
-            const testRef = createRef();
-            mount(
-                <Map>
-                    <MockComponent {...mockOptions} ref={testRef} />
-                </Map>
-            );
             testRef.current.setStopAngle(30);
             expect(setStopAngleSpy).toHaveBeenCalledWith(30);
         });
         it('should expose the setDirection ref method', () => {
-            const testRef = createRef();
-            mount(
-                <Map>
-                    <MockComponent {...mockOptions} ref={testRef} />
-                </Map>
-            );
             testRef.current.setDirection(30, 60);
             expect(setDirectionSpy).toHaveBeenCalledWith(30, 60);
         });

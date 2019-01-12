@@ -9,8 +9,12 @@ export default class AbstractComponent extends Path {
     }
 
     updateLeafletElement(fromProps, { startAngle, stopAngle }) {
-        this.setStartAngle(startAngle);
-        this.setStopAngle(stopAngle);
+        if (fromProps.startAngle !== startAngle) {
+            this.setStartAngle(startAngle);
+        }
+        if (fromProps.stopAngle !== stopAngle) {
+            this.setStopAngle(stopAngle);
+        }
     }
 
     setDirection(direction, size) {
