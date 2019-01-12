@@ -3,13 +3,18 @@ import 'leaflet-semicircle';
 
 export default class AbstractComponent extends Path {
     createLeafletElement(props) {
-        const { position, ...options } = props;
+        // props.leaflet is not used but destructured out so it's not passed to this.leafletComponent
+        const { position, leaflet, ...options } = props; // eslint-disable-line no-unused-vars
         return new this.leafletComponent(position, options);
     }
 
     updateLeafletElement(fromProps, { startAngle, stopAngle }) {
-        this.leafletElement.setStartAngle(startAngle);
-        this.leafletElement.setStopAngle(stopAngle);
+        if (fromProps.startAngle !== startAngle) {
+            this.setStartAngle(startAngle);
+        }
+        if (fromProps.stopAngle !== stopAngle) {
+            this.setStopAngle(stopAngle);
+        }
     }
 
     setDirection(direction, size) {
