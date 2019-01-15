@@ -77,15 +77,15 @@ describe('<AbstractComponent />', () => {
 
     describe('ref methods', () => {
         it('should expose the setStartAngle ref method', () => {
-            testRef.current.setStartAngle(30);
+            testRef.current.leafletElement.setStartAngle(30);
             expect(setStartAngleSpy).toHaveBeenCalledWith(30);
         });
         it('should expose the setStopAngle ref method', () => {
-            testRef.current.setStopAngle(30);
+            testRef.current.leafletElement.setStopAngle(30);
             expect(setStopAngleSpy).toHaveBeenCalledWith(30);
         });
         it('should expose the setDirection ref method', () => {
-            testRef.current.setDirection(30, 60);
+            testRef.current.leafletElement.setDirection(30, 60);
             expect(setDirectionSpy).toHaveBeenCalledWith(30, 60);
         });
     });

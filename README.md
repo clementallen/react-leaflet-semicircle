@@ -14,7 +14,7 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Semicircle vector layers for [Leaflet](https://leafletjs.com) maps. Extends [L.Circle](http://leafletjs.com/reference.html#circle) and [L.CircleMarker](http://leafletjs.com/reference.html#circlemarker).
 
-_Tested with Leaflet 1.4.0 and React-Leaflet 2.1.4_
+_Tested with Leaflet 1.4.0 and React-Leaflet 2.2.0_
 
 ## Installation
 
@@ -75,7 +75,11 @@ import { SemiCircle, SemiCircleMarker } from 'react-leaflet-semicircle';
 ### \<SemiCircleMarker />
 
 ```javascript
-<SemiCircleMarker position={[51.505, -0.09]} startAngle={90} stopAngle={180} />
+<SemiCircleMarker
+    position={[51.505, -0.09]}
+    startAngle={90}
+    stopAngle={180
+/>
 ```
 
 #### Props
@@ -88,9 +92,9 @@ import { SemiCircle, SemiCircleMarker } from 'react-leaflet-semicircle';
 
 **All other options from L.CircleMarker are also supported. [View them here](https://leafletjs.com/reference#circlemarker)**
 
-### Component methods
+### Additional component methods
 
-Each component comes with methods that can be accessed via [React Refs](https://reactjs.org/docs/refs-and-the-dom.html).
+Each component comes with additional methods that can be accessed via [React Refs](https://reactjs.org/docs/refs-and-the-dom.html).
 
 #### Setup
 
@@ -113,21 +117,21 @@ this.semiCircleRef = React.createRef();
 Use `setDirection(direction, size)` to display a semicircle of `size` degrees at `direction`.
 
 ```javascript
-this.semiCircleRef.current.setDirection(90, 90);
+this.semiCircleRef.current.leafletElement.setDirection(90, 90);
 ```
 
 #### setStartAngle(angle)
 
-Set the start angle of the semicircle to `angle`
+Use `setStartAngle(angle)` to set the start angle of the semicircle to `angle`
 
 ```javascript
-this.semiCircleRef.current.setStartAngle(90);
+this.semiCircleRef.current.leafletElement.setStartAngle(90);
 ```
 
 #### setStopAngle(angle)
 
-Set the stop angle of the semicircle to `angle`
+Use `setStopAngle(angle)` to set the stop angle of the semicircle to `angle`
 
 ```javascript
-this.semiCircleRef.current.setStopAngle(90);
+this.semiCircleRef.current.leafletElement.setStopAngle(90);
 ```
