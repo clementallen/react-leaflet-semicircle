@@ -2,31 +2,19 @@ import { Path } from 'react-leaflet';
 import 'leaflet-semicircle';
 
 export default class AbstractComponent extends Path {
-    createLeafletElement(props) {
-        // props.leaflet is not used but destructured out so it's not passed to this.leafletComponent
-        const { position, leaflet, ...options } = props; // eslint-disable-line no-unused-vars
+    // props.leaflet is not used but destructured out so it's not passed to this.leafletComponent
+    // eslint-disable-next-line no-unused-vars
+    createLeafletElement({ position, leaflet, ...options }) {
         return new this.leafletComponent(position, options);
     }
 
     updateLeafletElement(fromProps, { startAngle, stopAngle }) {
         if (fromProps.startAngle !== startAngle) {
-            this.setStartAngle(startAngle);
+            this.leafletElement.setStartAngle(startAngle);
         }
         if (fromProps.stopAngle !== stopAngle) {
-            this.setStopAngle(stopAngle);
+            this.leafletElement.setStopAngle(stopAngle);
         }
-    }
-
-    setDirection(direction, size) {
-        this.leafletElement.setDirection(direction, size);
-    }
-
-    setStartAngle(angle) {
-        this.leafletElement.setStartAngle(angle);
-    }
-
-    setStopAngle(angle) {
-        this.leafletElement.setStopAngle(angle);
     }
 
     get leafletComponent() {
