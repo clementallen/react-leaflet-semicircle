@@ -24,4 +24,17 @@ describe('<SemiCircle />', () => {
                 .instance()
         ).toBeInstanceOf(AbstractComponent);
     });
+    it('should extend L.SemiCircleMarker', () => {
+        const wrapper = mount(
+            <Map>
+                <SemiCircle />
+            </Map>
+        );
+        expect(
+            wrapper
+                .find(SemiCircle)
+                .children()
+                .instance().leafletComponent
+        ).toEqual(L.SemiCircle);
+    });
 });
