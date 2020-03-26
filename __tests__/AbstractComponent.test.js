@@ -4,7 +4,7 @@ import AbstractComponent from '../src/AbstractComponent';
 import MockLeafletPlugin, {
     setStartAngleSpy,
     setStopAngleSpy,
-    setDirectionSpy
+    setDirectionSpy,
 } from '../__mocks__/MockLeafletPlugin';
 
 const MockComponent = withLeaflet(
@@ -17,7 +17,7 @@ const MockComponent = withLeaflet(
 
 function updateProps(wrapper, props) {
     wrapper.setProps({
-        children: cloneElement(wrapper.props().children, props)
+        children: cloneElement(wrapper.props().children, props),
     });
 }
 
@@ -26,7 +26,7 @@ const mockOptions = {
     radius: 2000,
     startAngle: 90,
     stopAngle: 180,
-    color: 'white'
+    color: 'white',
 };
 let wrapper;
 let testRef;
