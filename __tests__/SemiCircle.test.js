@@ -6,7 +6,7 @@ import AbstractComponent from '../src/AbstractComponent';
 
 jest.spyOn(L, 'SemiCircle').mockImplementation(() => {
     return {
-        _layerAdd: () => {}
+        _layerAdd: () => {},
     };
 });
 
@@ -17,12 +17,9 @@ describe('<SemiCircle />', () => {
                 <SemiCircle />
             </Map>
         );
-        expect(
-            wrapper
-                .find(SemiCircle)
-                .children()
-                .instance()
-        ).toBeInstanceOf(AbstractComponent);
+        expect(wrapper.find(SemiCircle).children().instance()).toBeInstanceOf(
+            AbstractComponent
+        );
     });
     it('should extend L.SemiCircleMarker', () => {
         const wrapper = mount(
@@ -31,10 +28,7 @@ describe('<SemiCircle />', () => {
             </Map>
         );
         expect(
-            wrapper
-                .find(SemiCircle)
-                .children()
-                .instance().leafletComponent
+            wrapper.find(SemiCircle).children().instance().leafletComponent
         ).toEqual(L.SemiCircle);
     });
 });
