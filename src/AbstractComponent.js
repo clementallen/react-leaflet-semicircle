@@ -8,12 +8,21 @@ export default class AbstractComponent extends Path {
         return new this.leafletComponent(position, options);
     }
 
-    updateLeafletElement(fromProps, { startAngle, stopAngle }) {
+    updateLeafletElement(
+        fromProps,
+        { startAngle, stopAngle, position, radius }
+    ) {
         if (fromProps.startAngle !== startAngle) {
             this.leafletElement.setStartAngle(startAngle);
         }
         if (fromProps.stopAngle !== stopAngle) {
             this.leafletElement.setStopAngle(stopAngle);
+        }
+        if (fromProps.radius !== radius) {
+            this.leafletElement.setRadius(radius);
+        }
+        if (fromProps.position !== position) {
+            this.leafletElement.setLatLng(position);
         }
     }
 

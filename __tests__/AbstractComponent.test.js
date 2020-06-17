@@ -4,6 +4,8 @@ import AbstractComponent from '../src/AbstractComponent';
 import MockLeafletPlugin, {
     setStartAngleSpy,
     setStopAngleSpy,
+    setRadiusSpy,
+    setLatLngSpy,
     setDirectionSpy,
 } from '../__mocks__/MockLeafletPlugin';
 
@@ -36,6 +38,7 @@ describe('<AbstractComponent />', () => {
         MockLeafletPlugin.mockClear();
         setStartAngleSpy.mockClear();
         setStopAngleSpy.mockClear();
+        setRadiusSpy.mockClear();
         setDirectionSpy.mockClear();
         testRef = createRef();
         wrapper = mount(
@@ -65,6 +68,14 @@ describe('<AbstractComponent />', () => {
             updateProps(wrapper, { stopAngle: 200 });
             expect(setStopAngleSpy).toHaveBeenCalledWith(200);
         });
+        it('should call the setRadius method if props change', () => {
+            updateProps(wrapper, { radius: 1000 });
+            expect(setRadiusSpy).toHaveBeenCalledWith(1000);
+        });
+        it('should call the setLatLng method if props change', () => {
+            updateProps(wrapper, { position: [51, 0] });
+            expect(setLatLngSpy).toHaveBeenCalledWith([51, 0]);
+        });
         it('should not call the setStartAngle method if props do not change', () => {
             updateProps(wrapper, { startAngle: 90 });
             expect(setStartAngleSpy).toHaveBeenCalledTimes(0);
@@ -72,6 +83,10 @@ describe('<AbstractComponent />', () => {
         it('should not call the setStopAngle method if props do not change', () => {
             updateProps(wrapper, { stopAngle: 180 });
             expect(setStopAngleSpy).toHaveBeenCalledTimes(0);
+        });
+        it('should not call the setRadius method if props do not change', () => {
+            updateProps(wrapper, { radius: 2000 });
+            expect(setRadiusSpy).toHaveBeenCalledTimes(0);
         });
     });
 
