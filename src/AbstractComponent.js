@@ -21,7 +21,11 @@ export default class AbstractComponent extends Path {
         if (fromProps.radius !== radius) {
             this.leafletElement.setRadius(radius);
         }
-        if (fromProps.position !== position) {
+        if (
+            !fromProps.position.every(
+                (v, i) => Math.abs(v - position[i]) < Number.EPSILON
+            )
+        ) {
             this.leafletElement.setLatLng(position);
         }
     }
