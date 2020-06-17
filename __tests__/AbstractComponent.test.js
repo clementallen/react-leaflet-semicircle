@@ -40,6 +40,7 @@ describe('<AbstractComponent />', () => {
         setStopAngleSpy.mockClear();
         setRadiusSpy.mockClear();
         setDirectionSpy.mockClear();
+        setLatLngSpy.mockClear();
         testRef = createRef();
         wrapper = mount(
             <Map>
@@ -75,6 +76,10 @@ describe('<AbstractComponent />', () => {
         it('should call the setLatLng method if props change', () => {
             updateProps(wrapper, { position: [51, 0] });
             expect(setLatLngSpy).toHaveBeenCalledWith([51, 0]);
+        });
+        it('should not call the setLatLng method if props do not change', () => {
+            updateProps(wrapper, { position: [51.505, -0.09] });
+            expect(setLatLngSpy).toHaveBeenCalledTimes(0);
         });
         it('should not call the setStartAngle method if props do not change', () => {
             updateProps(wrapper, { startAngle: 90 });
