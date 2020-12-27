@@ -13,7 +13,7 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Semicircle vector layers for [Leaflet](https://leafletjs.com) maps. Extends [L.Circle](http://leafletjs.com/reference.html#circle) and [L.CircleMarker](http://leafletjs.com/reference.html#circlemarker).
 
-_Tested with Leaflet 1.6.0 and React-Leaflet 2.7.0_
+_Most recently tested with Leaflet 1.7.1 and React-Leaflet 2.8.0_
 
 ## Installation
 
