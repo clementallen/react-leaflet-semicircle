@@ -15,10 +15,16 @@ Semicircle vector layers for [Leaflet](https://leafletjs.com) maps. Extends [L.C
 
 _Most recently tested with Leaflet 1.7.1 and React-Leaflet 2.8.0_
 
+## Requirements
+
+This version of the library supports React Leaflet v2. <br/>
+If you are using React Leaflet v3, please use the latest version of this library<br/>
+https://github.com/clementallen/react-leaflet-semicircle/
+
 ## Installation
 
 ```bash
-npm install react-leaflet-semicircle --save
+npm install react-leaflet-semicircle@2 --save
 ```
 
 ## Usage
