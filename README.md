@@ -13,7 +13,13 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Semicircle vector layers for [Leaflet](https://leafletjs.com) maps. Extends [L.Circle](http://leafletjs.com/reference.html#circle) and [L.CircleMarker](http://leafletjs.com/reference.html#circlemarker).
 
-_Most recently tested with Leaflet 1.7.1 and React-Leaflet 2.8.0_
+_Most recently tested with Leaflet 1.7.1 and React-Leaflet 3.1.0_
+
+## Requirements
+
+The current version of this library supports React Leaflet v3. <br/>
+If you are using React Leaflet v2, please use the v2 version of this library: <br/>
+https://github.com/clementallen/react-leaflet-semicircle/tree/v2
 
 ## Installation
 
@@ -26,10 +32,10 @@ npm install react-leaflet-semicircle --save
 ### Complete example with react-leaflet
 
 ```javascript
-import { Map, TileLayer } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import { SemiCircle, SemiCircleMarker } from 'react-leaflet-semicircle';
 
-<Map center={[51.505, -0.09]} zoom={13}>
+<MapContainer center={[51.505, -0.09]} zoom={13}>
     <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -46,7 +52,7 @@ import { SemiCircle, SemiCircleMarker } from 'react-leaflet-semicircle';
         startAngle={90}
         stopAngle={180}
     />
-</Map>;
+</MapContainer>;
 ```
 
 ### \<SemiCircle />
