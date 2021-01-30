@@ -6,7 +6,7 @@
 [![](https://img.shields.io/david/clementallen/react-leaflet-semicircle.svg?style=flat-square)](https://david-dm.org/clementallen/react-leaflet-semicircle)
 [![](https://img.shields.io/david/dev/clementallen/react-leaflet-semicircle.svg?style=flat-square)](https://david-dm.org/clementallen/react-leaflet-semicircle?type=dev)
 [![](https://img.shields.io/codeclimate/coverage/clementallen/react-leaflet-semicircle.svg?style=flat-square)](https://codeclimate.com/github/clementallen/react-leaflet-semicircle)
-[![](https://img.shields.io/codeclimate/maintainability/clementallen/react-leaflet-semicircle.svg?style=flat-square)](https://codeclimate.com/github/
+[![](https://img.shields.io/codeclimate/maintainability/clementallen/react-leaflet-semicircle.svg?style=flat-square)](https://codeclimate.com/github/)
 
 React wrapper of [leaflet-semicircle](https://github.com/jieter/Leaflet-semicircle)
 for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
@@ -99,12 +99,12 @@ import { SemiCircle, SemiCircleMarker } from 'react-leaflet-semicircle';
 
 ### Additional component methods
 
-Each component comes with additional methods that can be accessed via [React Refs](https://reactjs.org/docs/refs-and-the-dom.html).
+Each component comes with additional methods that can be accessed via [React Refs](https://reactjs.org/docs/hooks-reference.html#useref).
 
 #### Setup
 
 ```javascript
-this.semiCircleRef = React.createRef();
+const semiCircleRef = React.useRef();
 
 // ----
 
@@ -113,7 +113,7 @@ this.semiCircleRef = React.createRef();
     radius={2000}
     startAngle={90}
     stopAngle={180}
-    ref={this.semiCircleRef}
+    ref={semiCircleRef}
 />;
 ```
 
@@ -122,7 +122,7 @@ this.semiCircleRef = React.createRef();
 Use `setDirection(direction, size)` to display a semicircle of `size` degrees at `direction`.
 
 ```javascript
-this.semiCircleRef.current.setDirection(90, 90);
+semiCircleRef.current.setDirection(90, 90);
 ```
 
 #### setStartAngle(angle)
@@ -130,7 +130,7 @@ this.semiCircleRef.current.setDirection(90, 90);
 Use `setStartAngle(angle)` to set the start angle of the semicircle to `angle`
 
 ```javascript
-this.semiCircleRef.current.setStartAngle(90);
+semiCircleRef.current.setStartAngle(90);
 ```
 
 #### setStopAngle(angle)
@@ -138,5 +138,5 @@ this.semiCircleRef.current.setStartAngle(90);
 Use `setStopAngle(angle)` to set the stop angle of the semicircle to `angle`
 
 ```javascript
-this.semiCircleRef.current.setStopAngle(90);
+semiCircleRef.current.setStopAngle(90);
 ```
