@@ -116,7 +116,7 @@ this.semiCircleRef = React.createRef();
 Use `setDirection(direction, size)` to display a semicircle of `size` degrees at `direction`.
 
 ```javascript
-this.semiCircleRef.current.leafletElement.setDirection(90, 90);
+this.semiCircleRef.current.setDirection(90, 90);
 ```
 
 #### setStartAngle(angle)
@@ -124,7 +124,7 @@ this.semiCircleRef.current.leafletElement.setDirection(90, 90);
 Use `setStartAngle(angle)` to set the start angle of the semicircle to `angle`
 
 ```javascript
-this.semiCircleRef.current.leafletElement.setStartAngle(90);
+this.semiCircleRef.current.setStartAngle(90);
 ```
 
 #### setStopAngle(angle)
@@ -132,5 +132,5 @@ this.semiCircleRef.current.leafletElement.setStartAngle(90);
 Use `setStopAngle(angle)` to set the stop angle of the semicircle to `angle`
 
 ```javascript
-this.semiCircleRef.current.leafletElement.setStopAngle(90);
+this.semiCircleRef.current.setStopAngle(90);
 ```

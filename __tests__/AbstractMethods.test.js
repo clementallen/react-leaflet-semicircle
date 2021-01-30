@@ -1,6 +1,12 @@
 import React, { cloneElement, createRef } from 'react';
-import { Map, withLeaflet } from 'react-leaflet';
-import AbstractComponent from '../src/AbstractComponent';
+import { MapContainer } from 'react-leaflet';
+import { createLayerComponent } from '@react-leaflet/core';
+
+import {
+    createLeafletElement,
+    updateLeafletElement,
+} from '../src/AbstractMethods';
+
 import MockLeafletPlugin, {
     setStartAngleSpy,
     setStopAngleSpy,
@@ -9,12 +15,9 @@ import MockLeafletPlugin, {
     setDirectionSpy,
 } from '../__mocks__/MockLeafletPlugin';
 
-const MockComponent = withLeaflet(
-    class MockComponent extends AbstractComponent {
-        get leafletComponent() {
-            return MockLeafletPlugin;
-        }
-    }
+const MockComponent = createLayerComponent(
+    createLeafletElement(MockLeafletPlugin),
+    updateLeafletElement,
 );
 
 function updateProps(wrapper, props) {
@@ -30,6 +33,7 @@ const mockOptions = {
     stopAngle: 180,
     color: 'white',
 };
+
 let wrapper;
 let testRef;
 
@@ -43,21 +47,10 @@ describe('<AbstractComponent />', () => {
         setLatLngSpy.mockClear();
         testRef = createRef();
         wrapper = mount(
-            <Map>
+            <MapContainer>
                 <MockComponent {...mockOptions} ref={testRef} />
-            </Map>
+            </MapContainer>,
         );
-    });
-    describe('constructor', () => {
-        it('should throw an error when leafletComponent is not implemented', () => {
-            expect(() => {
-                shallow(<AbstractComponent />);
-            }).toThrowError('leafletComponent getter not implemented');
-        });
-        it('should call the leaflet plugin constructor with the expected arguments', () => {
-            const { position, ...options } = mockOptions;
-            expect(MockLeafletPlugin).toHaveBeenCalledWith(position, options);
-        });
     });
 
     describe('prop changes', () => {
@@ -97,15 +90,15 @@ describe('<AbstractComponent />', () => {
 
     describe('ref methods', () => {
         it('should expose the setStartAngle ref method', () => {
-            testRef.current.leafletElement.setStartAngle(30);
+            testRef.current.setStartAngle(30);
             expect(setStartAngleSpy).toHaveBeenCalledWith(30);
         });
         it('should expose the setStopAngle ref method', () => {
-            testRef.current.leafletElement.setStopAngle(30);
+            testRef.current.setStopAngle(30);
             expect(setStopAngleSpy).toHaveBeenCalledWith(30);
         });
         it('should expose the setDirection ref method', () => {
-            testRef.current.leafletElement.setDirection(30, 60);
+            testRef.current.setDirection(30, 60);
             expect(setDirectionSpy).toHaveBeenCalledWith(30, 60);
         });
     });

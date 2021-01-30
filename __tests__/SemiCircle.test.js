@@ -1,34 +1,16 @@
-import React from 'react';
-import { Map } from 'react-leaflet';
+import React, { createRef } from 'react';
+import { MapContainer } from 'react-leaflet';
 import L from 'leaflet';
-import { SemiCircle } from '../src/index';
-import AbstractComponent from '../src/AbstractComponent';
-
-jest.spyOn(L, 'SemiCircle').mockImplementation(() => {
-    return {
-        _layerAdd: () => {},
-    };
-});
+import { SemiCircle } from '../src';
 
 describe('<SemiCircle />', () => {
-    it('should extend the AbstractComponent', () => {
-        const wrapper = mount(
-            <Map>
-                <SemiCircle />
-            </Map>
+    it('should extend L.SemiCircle', () => {
+        const testRef = createRef();
+        mount(
+            <MapContainer>
+                <SemiCircle ref={testRef} />
+            </MapContainer>,
         );
-        expect(wrapper.find(SemiCircle).children().instance()).toBeInstanceOf(
-            AbstractComponent
-        );
-    });
-    it('should extend L.SemiCircleMarker', () => {
-        const wrapper = mount(
-            <Map>
-                <SemiCircle />
-            </Map>
-        );
-        expect(
-            wrapper.find(SemiCircle).children().instance().leafletComponent
-        ).toEqual(L.SemiCircle);
+        expect(testRef.current).toBeInstanceOf(L.SemiCircle);
     });
 });
