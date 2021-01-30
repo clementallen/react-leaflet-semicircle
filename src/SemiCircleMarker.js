@@ -1,8 +1,10 @@
+import { createLayerComponent } from '@react-leaflet/core';
 import L from 'leaflet';
-import AbstractComponent from './AbstractComponent';
+import 'leaflet-semicircle';
 
-export default class SemiCircleMarker extends AbstractComponent {
-    get leafletComponent() {
-        return L.SemiCircleMarker;
-    }
-}
+import { createLeafletElement, updateLeafletElement } from './AbstractMethods';
+
+export default createLayerComponent(
+    createLeafletElement(L.SemiCircleMarker),
+    updateLeafletElement,
+);

@@ -6,14 +6,20 @@
 [![](https://img.shields.io/david/clementallen/react-leaflet-semicircle.svg?style=flat-square)](https://david-dm.org/clementallen/react-leaflet-semicircle)
 [![](https://img.shields.io/david/dev/clementallen/react-leaflet-semicircle.svg?style=flat-square)](https://david-dm.org/clementallen/react-leaflet-semicircle?type=dev)
 [![](https://img.shields.io/codeclimate/coverage/clementallen/react-leaflet-semicircle.svg?style=flat-square)](https://codeclimate.com/github/clementallen/react-leaflet-semicircle)
-[![](https://img.shields.io/codeclimate/maintainability/clementallen/react-leaflet-semicircle.svg?style=flat-square)](https://codeclimate.com/github/
+[![](https://img.shields.io/codeclimate/maintainability/clementallen/react-leaflet-semicircle.svg?style=flat-square)](https://codeclimate.com/github/)
 
 React wrapper of [leaflet-semicircle](https://github.com/jieter/Leaflet-semicircle)
 for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Semicircle vector layers for [Leaflet](https://leafletjs.com) maps. Extends [L.Circle](http://leafletjs.com/reference.html#circle) and [L.CircleMarker](http://leafletjs.com/reference.html#circlemarker).
 
-_Most recently tested with Leaflet 1.7.1 and React-Leaflet 2.8.0_
+_Most recently tested with Leaflet 1.7.1 and React-Leaflet 3.1.0_
+
+## Requirements
+
+The current version of this library supports React Leaflet v3. <br/>
+If you are using React Leaflet v2, please use the v2 version of this library: <br/>
+https://github.com/clementallen/react-leaflet-semicircle/tree/v2
 
 ## Installation
 
@@ -26,10 +32,10 @@ npm install react-leaflet-semicircle --save
 ### Complete example with react-leaflet
 
 ```javascript
-import { Map, TileLayer } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import { SemiCircle, SemiCircleMarker } from 'react-leaflet-semicircle';
 
-<Map center={[51.505, -0.09]} zoom={13}>
+<MapContainer center={[51.505, -0.09]} zoom={13}>
     <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -46,7 +52,7 @@ import { SemiCircle, SemiCircleMarker } from 'react-leaflet-semicircle';
         startAngle={90}
         stopAngle={180}
     />
-</Map>;
+</MapContainer>;
 ```
 
 ### \<SemiCircle />
@@ -93,12 +99,12 @@ import { SemiCircle, SemiCircleMarker } from 'react-leaflet-semicircle';
 
 ### Additional component methods
 
-Each component comes with additional methods that can be accessed via [React Refs](https://reactjs.org/docs/refs-and-the-dom.html).
+Each component comes with additional methods that can be accessed via [React Refs](https://reactjs.org/docs/hooks-reference.html#useref).
 
 #### Setup
 
 ```javascript
-this.semiCircleRef = React.createRef();
+const semiCircleRef = React.useRef();
 
 // ----
 
@@ -107,7 +113,7 @@ this.semiCircleRef = React.createRef();
     radius={2000}
     startAngle={90}
     stopAngle={180}
-    ref={this.semiCircleRef}
+    ref={semiCircleRef}
 />;
 ```
 
@@ -116,7 +122,7 @@ this.semiCircleRef = React.createRef();
 Use `setDirection(direction, size)` to display a semicircle of `size` degrees at `direction`.
 
 ```javascript
-this.semiCircleRef.current.leafletElement.setDirection(90, 90);
+semiCircleRef.current.setDirection(90, 90);
 ```
 
 #### setStartAngle(angle)
@@ -124,7 +130,7 @@ this.semiCircleRef.current.leafletElement.setDirection(90, 90);
 Use `setStartAngle(angle)` to set the start angle of the semicircle to `angle`
 
 ```javascript
-this.semiCircleRef.current.leafletElement.setStartAngle(90);
+semiCircleRef.current.setStartAngle(90);
 ```
 
 #### setStopAngle(angle)
@@ -132,5 +138,5 @@ this.semiCircleRef.current.leafletElement.setStartAngle(90);
 Use `setStopAngle(angle)` to set the stop angle of the semicircle to `angle`
 
 ```javascript
-this.semiCircleRef.current.leafletElement.setStopAngle(90);
+semiCircleRef.current.setStopAngle(90);
 ```
