@@ -11,7 +11,7 @@ export default jest.fn().mockImplementation(() => {
         setRadius: setRadiusSpy,
         setLatLng: setLatLngSpy,
         setDirection: setDirectionSpy,
-        _layerAdd: () => {}
+        _layerAdd: () => {},
     };
 });
 
@@ -20,5 +20,5 @@ export {
     setStopAngleSpy,
     setRadiusSpy,
     setLatLngSpy,
-    setDirectionSpy
+    setDirectionSpy,
 };
