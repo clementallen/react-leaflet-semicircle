@@ -1,8 +1,9 @@
 export function createLeafletElement(LeafletComponent) {
     return ({ position, ...options }, context) => {
+        const instance = new LeafletComponent(position, options);
         return {
-            instance: new LeafletComponent(position, options),
-            context: { ...context },
+            instance,
+            context: { ...context, overlayContainer: instance },
         };
     };
 }
