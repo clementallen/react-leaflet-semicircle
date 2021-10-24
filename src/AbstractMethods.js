@@ -10,9 +10,11 @@ export function createLeafletElement(LeafletComponent) {
 
 export function updateLeafletElement(
     layer,
-    { startAngle, stopAngle, position, radius },
+    { startAngle, stopAngle, position, radius, ...options },
     prevProps,
 ) {
+    layer.setStyle(options);
+
     if (prevProps.startAngle !== startAngle) {
         layer.setStartAngle(startAngle);
     }
